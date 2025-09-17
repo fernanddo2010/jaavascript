@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+.calculadora-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="number"] {
+    width: calc(100% - 22px); /* Adjust width considering padding and border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+h4 {
+    color: #333;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+#resultado {
+    font-size: 24px;
+    font-weight: bold;
+    color: #28a745; /* Green color for result */
+    min-height: 30px; /* Ensure space for the result */
+}
+    </style>
+</head>
+
+<body>
+    <div class="calculadora-container">
+    <h2>Calculadora básica</h2>
+    <form>
+        <label for="num1">Informe o 1º número</label>
+        <input id="num1" type="number"> <br><br>
+        <label for="num2">Informe o 2º número</label>
+        <input id="num2" type="number"> <br><br>
+        <button type="button" onclick="calcular('somar')">Somar</button>
+        <button type="button" onclick="calcular('subtrair')">Subtrair</button>
+        <button type="button" onclick="calcular('multiplicar')">Multiplicar</button>
+        <button type="button" onclick="calcular('dividir')">Dividir</button>
+    </form>
+    <h4>Resultado:</h4>
+    <div id="resultado"></div></div>
+    <script>
+        function calcular(operacao){
+          //Pegar os valores do formulário 
+          let num1=parseFloat(document.getElementById('num1').value);  
+          let num2=parseFloat(document.getElementById('num2').value);  
+          //Realiza os calculos
+          switch(operacao){
+            case 'somar':
+                resultado=num1+num2;
+                break;
+            case 'subtrair':
+                resultado=num1-num2;
+                break;
+            case 'multiplicar':
+                resultado=num1*num2;
+                break;
+            case 'dividir':
+                if(num2!=0){
+                    resultado=num1/num2;
+                }else{
+                    resultado="Não é possivel dividir um número por ZERO"
+                }
+
+                break;
+          }
+          document.getElementById('resultado').textContent=resultado;
+        }
+    </script>
+</body>
+
+</html>
